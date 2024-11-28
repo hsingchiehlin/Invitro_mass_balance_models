@@ -1,0 +1,16 @@
+"Chemical","CAS","POD","value","Classification","Css_h","PODCss"
+"naphthalene","91-20-3","NOAEL",71,"PAH",15.79,1121.09
+"fluoranthene","206-44-0","NOAEL",125,"PAH",8.101,1012.625
+"acenaphthene","83-32-9","NOAEL",175,"PAH",18.25,3193.75
+"benzidine","92-87-5","LOAEL",2.7,"Intermediate",1.26,3.402
+"p-cresol","106-44-5","NOAEL",5,"Intermediate",0.1851,0.9255
+"1,2,3-trichlorobenzene","87-61-6","NOAEL",7.7,"Intermediate",13.89,106.953
+"dieldrin","60-57-1","NOAEL",0.005,"Pesticide",1624,8.12
+"aldrin","309-00-2","LOAEL",0.025,"Pesticide",12690,317.25
+"heptachlor","76-44-8","LOAEL",0.03,"Pesticide",33.34,1.0002
+"gamma-hexachlorocyclohexane","58-89-9","LOAEL",0.012,"Pesticide",205.5,2.466
+"pentachlorophenol","87-86-5","LOAEL",1.5,"Pesticide",10.52,15.78
+"azinphos-methyl","86-50-0","BMDL",0.3,"Pesticide",0.2244,0.06732
+"dicofol","115-32-2","NOAEL",0.12,"Pesticide",54.82,6.5784
+"endosulfan","115-29-7","NOAEL",0.6,"Pesticide",66.8,40.08
+"chlorpyrifos","2921-88-2","NOAEL",0.1,"Pesticide",40.52,4.052
