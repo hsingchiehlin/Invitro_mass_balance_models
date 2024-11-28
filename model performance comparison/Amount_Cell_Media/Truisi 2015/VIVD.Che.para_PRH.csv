@@ -1,0 +1,3 @@
+Chemical,CAS,MW,Compound type,Salting-out Constant,Melting Point_Celsius degree,pKa,Water Solubility_mgperL,LogKOW,LogKAW,CNOM_uM
+ibuprofen,15687-27-1,206.28,4,0.2632,87.4,4.57,35.68644,3.73,-5.91,10
+ibuprofen,15687-27-1,206.28,4,0.2632,87.4,4.57,35.68644,3.73,-5.91,100

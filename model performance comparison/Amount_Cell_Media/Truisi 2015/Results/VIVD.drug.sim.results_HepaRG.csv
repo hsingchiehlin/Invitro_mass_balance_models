@@ -1,0 +1,6 @@
+,Chemical,CAS,MW,Compound.type,Salting.out.Constant,Melting.Point_Celsius.degree,pKa,Water.Solubility_mgperL,LogKOW,LogKAW,CNOM_uM,Time,Q_met,C_cells,C_air,C_plastic,C_free_diss,C_IW,C_lyso,C_mito,C_parent,Q_parent,Q_media_free,Q_cells,Q_media,Q_air,Q_plastic,Q_IW,Q_lyso
+1,ibuprofen,15687-27-1,206.28,4,0.2632,87.4,4.57,35.68644,3.73,-5.91,10,1440,0,1.62E-06,2.58E-14,1.96E-06,5.56E-06,1.58E-06,1.05E-07,2.13E-06,1.00E-05,2.00E-08,1.11E-08,5.50E-12,1.95E-08,3.81E-16,4.50E-10,4.78E-12,3.57E-15
+2,ibuprofen,15687-27-1,206.28,4,0.2632,87.4,4.57,35.68644,3.73,-5.91,100,1440,0,1.62E-05,2.58E-13,1.96E-05,5.56E-05,1.58E-05,1.05E-06,2.13E-05,1.00E-04,2.00E-07,1.11E-07,5.50E-11,1.95E-07,3.81E-15,4.50E-09,4.78E-11,3.57E-14
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,1.95E-02,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,1.95E-01,,,,
