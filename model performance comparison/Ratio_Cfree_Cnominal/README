@@ -1,1 +1,2 @@
-# Each folder contains the Excel tools and R scripts to predict the ratio of Cfree and Cnominal.
+# Each folder contains the Excel tools and R scripts to predict the ratio of Cfree and Cnominal for each dataset.
+# These folders are named by the data references.
