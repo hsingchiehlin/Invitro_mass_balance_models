@@ -779,8 +779,6 @@ Scatter.plot.data <- data.frame(Chemical = rep(All_results$Chemical, 2),
                                 Def.value = c(All_results$default_F_C_media_free, All_results$default_F_Q_cells),
                                 Oth.value = c(All_results$F_C_media_free, All_results$F_Q_cells),
                                 Label = rep(c("Fraction of free conc. in media","Chemical fraction in cell"), each=22256))
-Scatter.plot.data$Model <- factor(Scatter.plot.data$Model, levels = c("Fischer", "IVMBM", "VIVD", "VCBA"),
-                                  labels = c("Fischer et al. (2017)", "Armitage et al. (2021)", "Fisher et al. (2019)", "Zaldívar Comenges et al. (2017)"))
 Scatter.plot.data$Label <- factor(Scatter.plot.data$Label, levels = c("Fraction of free conc. in media","Chemical fraction in cell"))
 
 Fig_S10 <- 
@@ -819,7 +817,7 @@ Fig_S10 <-
         #axis.title.y = element_text(vjust = -15,color = "black", face = "bold"),
         axis.title = element_text(color = "black"))
 jpeg(width = 10, height = 5, "Figure S10.jpeg", units = "in", res=300)
-pdf(width = 10, height = 5, "Figure S1.pdf")
+pdf(width = 10, height = 5, "Figure S10.pdf")
 Fig_S10
 dev.off()
 
