@@ -1476,7 +1476,7 @@ scatter <-
         axis.title = element_text(color = "black", size=12),
         axis.text = element_text(color = "black", size=9))
 scatter
-ggsave("Figure 5.jpeg", width=11, height=10) #Saving 8.57 x 8.96 in image
+ggsave("Figure 5.jpeg", width=11, height=10)
 ggsave("Figure 5.pdf", width=11, height=10)
 
 
