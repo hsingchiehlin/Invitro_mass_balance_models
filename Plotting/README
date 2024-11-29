@@ -1,2 +1,3 @@
-# This folder inclueds the data and codes for plotting Figure 2 and Figure S1-S10
+# This folder includes the data and codes for plotting Figure 2 and Figure S1-S10
 # As for Figure 5 and Figure S11, the data and plotting codes are placed in the folder "model application"
+# Figures 3 and 4 were plotted by using Prism. The data for Figure 3 are compiled in Supplementary Table S2. The calculation of Eta2 is presented in the R script "Plotting_code.R"
