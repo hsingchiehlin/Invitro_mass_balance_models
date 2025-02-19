@@ -12,6 +12,9 @@ library(spatstat)
 
 # ----------- load data -----------
 invivo_fup <- read.csv("invivo_fup.csv")
+for (i in 1:41) {
+  invivo_fup$fup_httk230[i] <-parameterize_steadystate(chem.cas = invivo_fup$CAS[i])$Funbound.plasma
+}
 
 #original in vivo POD
 origpod <- read.csv(file.path("POD database_15che","15 chemicals orig POD x Css.csv"))
@@ -91,14 +94,14 @@ for(i in 1:15){
 
 # -------------- without any adjustment --------------
 ##traditional POD
-pod.tox.df <- full_join(origpod, tox.5perc, by="CAS") # x=ToxCast, y=PODCss, xlab("ToxCast POD (ÂµM)")+ylab(bquote(Reg~POD[A]~x~Css~(ÂµM)))+
+pod.tox.df <- full_join(origpod, tox.5perc, by="CAS") # x=ToxCast, y=PODCss, xlab("ToxCast POD (?�µM)")+ylab(bquote(Reg~POD[A]~x~Css~(?�µM)))+
 pod.tox.s <- round((weightedCorr(log10(pod.tox.df$PODCss),log10(pod.tox.df$ToxCast), method=c("Spearman"))), digits=2)
 pod.tox.p <- round((weightedCorr(log10(pod.tox.df$PODCss),log10(pod.tox.df$ToxCast), method=c("Pearson"))), digits=2)
 pod.tox.mae <- mean(abs(log10(pod.tox.df$PODCss)-log10(pod.tox.df$ToxCast)))
 pod.tox.me <- mean(log10(pod.tox.df$PODCss)-log10(pod.tox.df$ToxCast))
 
 ##traditional POD x DAF
-poddaf.tox.df <- full_join(poddaf, tox.5perc, by="CAS") # x=ToxCast, y=poddaf.Css, xlab("ToxCast POD (ÂµM)")+ylab(bquote(Reg~POD[H]~x~Css~(ÂµM)))+
+poddaf.tox.df <- full_join(poddaf, tox.5perc, by="CAS") # x=ToxCast, y=poddaf.Css, xlab("ToxCast POD (?�µM)")+ylab(bquote(Reg~POD[H]~x~Css~(?�µM)))+
 poddaf.tox.s <- round((weightedCorr(log10(poddaf.tox.df$poddaf.Css),log10(poddaf.tox.df$ToxCast), method=c("Spearman"))), digits=2)
 poddaf.tox.p <- round((weightedCorr(log10(poddaf.tox.df$poddaf.Css),log10(poddaf.tox.df$ToxCast), method=c("Pearson"))), digits=2)
 poddaf.tox.mae <- mean(abs(log10(poddaf.tox.df$poddaf.Css)-log10(poddaf.tox.df$ToxCast)))
@@ -123,14 +126,14 @@ hed.tox.me <- weighted.mean(log10(hed.tox.df$HED50.Css)-log10(hed.tox.df$ToxCast
 
 ##in vivo POD vs iPSC+LCL POD scatter plot
 ##traditional POD
-pod.cell.df <- full_join(origpod, cell.min, by="CAS") # x=iPSCLCL, y=PODCss, xlab("six-cell-type POD (ÂµM)")+ylab(bquote(Reg~POD[A]~x~Css~(ÂµM)))+
+pod.cell.df <- full_join(origpod, cell.min, by="CAS") # x=iPSCLCL, y=PODCss, xlab("six-cell-type POD (?�µM)")+ylab(bquote(Reg~POD[A]~x~Css~(?�µM)))+
 pod.cell.s <- round((weightedCorr(log10(pod.cell.df$PODCss),log10(pod.cell.df$iPSCLCL), method=c("Spearman"))), digits=2)
 pod.cell.p <- round((weightedCorr(log10(pod.cell.df$PODCss),log10(pod.cell.df$iPSCLCL), method=c("Pearson"))), digits=2)
 pod.cell.mae <- mean(abs(log10(pod.cell.df$PODCss)-log10(pod.cell.df$iPSCLCL)))
 pod.cell.me <- mean(log10(pod.cell.df$PODCss)-log10(pod.cell.df$iPSCLCL))
 
 ##traditional POD x DAF
-poddaf.cell.df <- full_join(poddaf, cell.min, by="CAS") # x=iPSCLCL, y=poddaf.Css, xlab("six-cell-type POD (ÂµM)")+ylab(bquote(Reg~POD[H]~x~Css~(ÂµM)))+
+poddaf.cell.df <- full_join(poddaf, cell.min, by="CAS") # x=iPSCLCL, y=poddaf.Css, xlab("six-cell-type POD (?�µM)")+ylab(bquote(Reg~POD[H]~x~Css~(?�µM)))+
 poddaf.cell.s <- round((weightedCorr(log10(poddaf.cell.df$poddaf.Css),log10(poddaf.cell.df$iPSCLCL), method=c("Spearman"))), digits=2)
 poddaf.cell.p <- round((weightedCorr(log10(poddaf.cell.df$poddaf.Css),log10(poddaf.cell.df$iPSCLCL), method=c("Pearson"))), digits=2)
 poddaf.cell.mae <- mean(abs(log10(poddaf.cell.df$poddaf.Css)-log10(poddaf.cell.df$iPSCLCL)))
@@ -355,24 +358,24 @@ for(i in 1:15){
 
 
 ##traditional POD
-pod.tox.df <- full_join(origpod, tox.5perc, by="CAS") # x=ToxCast, y=PODCss, xlab("ToxCast POD (ÂµM)")+ylab(bquote(Reg~POD[A]~x~Css~(ÂµM)))+
-pod.tox.df <- pod.tox.df[-(which(is.na(pod.tox.df$PODCss*pod.tox.df$ToxCast))),]
+pod.tox.df <- full_join(origpod, tox.5perc, by="CAS") # x=ToxCast, y=PODCss, xlab("ToxCast POD (?�µM)")+ylab(bquote(Reg~POD[A]~x~Css~(?�µM)))+
+#pod.tox.df <- pod.tox.df[-(which(is.na(pod.tox.df$PODCss*pod.tox.df$ToxCast))),]
 pod.tox.s <- round((weightedCorr(log10(pod.tox.df$PODCss),log10(pod.tox.df$ToxCast), method=c("Spearman"))), digits=2)
 pod.tox.p <- round((weightedCorr(log10(pod.tox.df$PODCss),log10(pod.tox.df$ToxCast), method=c("Pearson"))), digits=2)
 pod.tox.mae <- mean(abs(log10(pod.tox.df$PODCss)-log10(pod.tox.df$ToxCast)))
 pod.tox.me <- mean(log10(pod.tox.df$PODCss)-log10(pod.tox.df$ToxCast))
 
 ##traditional POD x DAF
-poddaf.tox.df <- full_join(poddaf, tox.5perc, by="CAS") # x=ToxCast, y=poddaf.Css, xlab("ToxCast POD (ÂµM)")+ylab(bquote(Reg~POD[H]~x~Css~(ÂµM)))+
-poddaf.tox.df <- poddaf.tox.df[-(which(is.na(poddaf.tox.df$poddaf.Css*poddaf.tox.df$ToxCast))),]
+poddaf.tox.df <- full_join(poddaf, tox.5perc, by="CAS") # x=ToxCast, y=poddaf.Css, xlab("ToxCast POD (?�µM)")+ylab(bquote(Reg~POD[H]~x~Css~(?�µM)))+
+#poddaf.tox.df <- poddaf.tox.df[-(which(is.na(poddaf.tox.df$poddaf.Css*poddaf.tox.df$ToxCast))),]
 poddaf.tox.s <- round((weightedCorr(log10(poddaf.tox.df$poddaf.Css),log10(poddaf.tox.df$ToxCast), method=c("Spearman"))), digits=2)
 poddaf.tox.p <- round((weightedCorr(log10(poddaf.tox.df$poddaf.Css),log10(poddaf.tox.df$ToxCast), method=c("Pearson"))), digits=2)
 poddaf.tox.mae <- mean(abs(log10(poddaf.tox.df$poddaf.Css)-log10(poddaf.tox.df$ToxCast)))
 poddaf.tox.me <- mean(log10(poddaf.tox.df$poddaf.Css)-log10(poddaf.tox.df$ToxCast))
 
 ##BBMD
-bbmd.tox.df <- full_join(BMD, tox.5perc, by="CAS") # x=ToxCast, y=BMD50.Css, xlab("ToxCast POD (ÂµM)")+ylab(bquote(BMA~BMD[A]~x~Css~(ÂµM)))+
-bbmd.tox.df <- bbmd.tox.df[-(which(is.na(bbmd.tox.df$BMD50.Css*bbmd.tox.df$ToxCast))),]
+bbmd.tox.df <- full_join(BMD, tox.5perc, by="CAS") # x=ToxCast, y=BMD50.Css, xlab("ToxCast POD (?�µM)")+ylab(bquote(BMA~BMD[A]~x~Css~(?�µM)))+
+#bbmd.tox.df <- bbmd.tox.df[-(which(is.na(bbmd.tox.df$BMD50.Css*bbmd.tox.df$ToxCast))),]
 wt.bmd.tox <- 1/(log10(bbmd.tox.df$BMD95.Css)-log10(bbmd.tox.df$BMD5.Css))^2
 bbmd.tox.w.s <- round((weightedCorr(log10(bbmd.tox.df$BMD50.Css),log10(bbmd.tox.df$ToxCast), method=c("Spearman"), weights=wt.bmd.tox)), digits=2)
 bbmd.tox.w.p <- round((weightedCorr(log10(bbmd.tox.df$BMD50.Css),log10(bbmd.tox.df$ToxCast), method=c("Pearson"), weights=wt.bmd.tox)), digits=2)
@@ -380,8 +383,8 @@ bbmd.tox.mae <- weighted.mean(abs(log10(bbmd.tox.df$BMD50.Css)-log10(bbmd.tox.df
 bbmd.tox.me <- weighted.mean(log10(bbmd.tox.df$BMD50.Css)-log10(bbmd.tox.df$ToxCast), wt.bmd.tox)
 
 ##HED
-hed.tox.df <- full_join(HED, tox.5perc, by="CAS") # x=ToxCast, y=HED50.Css, xlab("ToxCast POD (ÂµM)")+ylab(bquote(BMA~BMD[H]~x~Css~(ÂµM)))+
-hed.tox.df <- hed.tox.df[-(which(is.na(hed.tox.df$HED50.Css*hed.tox.df$ToxCast))),]
+hed.tox.df <- full_join(HED, tox.5perc, by="CAS") # x=ToxCast, y=HED50.Css, xlab("ToxCast POD (?�µM)")+ylab(bquote(BMA~BMD[H]~x~Css~(?�µM)))+
+#hed.tox.df <- hed.tox.df[-(which(is.na(hed.tox.df$HED50.Css*hed.tox.df$ToxCast))),]
 wt.hed.tox <- 1/(log10(hed.tox.df$HED95.Css)-log10(hed.tox.df$HED5.Css))^2
 hed.tox.w.s <- round((weightedCorr(log10(hed.tox.df$HED50.Css),log10(hed.tox.df$ToxCast), method=c("Spearman"), weights=wt.hed.tox)), digits=2)
 hed.tox.w.p <- round((weightedCorr(log10(hed.tox.df$HED50.Css),log10(hed.tox.df$ToxCast), method=c("Pearson"), weights=wt.hed.tox)), digits=2)
@@ -391,24 +394,24 @@ hed.tox.me <- weighted.mean(log10(hed.tox.df$HED50.Css)-log10(hed.tox.df$ToxCast
 
 ##in vivo POD vs iPSC+LCL POD scatter plot
 ##traditional POD
-pod.cell.df <- full_join(origpod, cell.min, by="CAS") # x=iPSCLCL, y=PODCss, xlab("six-cell-type POD (ÂµM)")+ylab(bquote(Reg~POD[A]~x~Css~(ÂµM)))+
-pod.cell.df <- pod.cell.df[-(which(is.na(pod.cell.df$PODCss*pod.cell.df$iPSCLCL))),]
+pod.cell.df <- full_join(origpod, cell.min, by="CAS") # x=iPSCLCL, y=PODCss, xlab("six-cell-type POD (?�µM)")+ylab(bquote(Reg~POD[A]~x~Css~(?�µM)))+
+#pod.cell.df <- pod.cell.df[-(which(is.na(pod.cell.df$PODCss*pod.cell.df$iPSCLCL))),]
 pod.cell.s <- round((weightedCorr(log10(pod.cell.df$PODCss),log10(pod.cell.df$iPSCLCL), method=c("Spearman"))), digits=2)
 pod.cell.p <- round((weightedCorr(log10(pod.cell.df$PODCss),log10(pod.cell.df$iPSCLCL), method=c("Pearson"))), digits=2)
 pod.cell.mae <- mean(abs(log10(pod.cell.df$PODCss)-log10(pod.cell.df$iPSCLCL)))
 pod.cell.me <- mean(log10(pod.cell.df$PODCss)-log10(pod.cell.df$iPSCLCL))
 
 ##traditional POD x DAF
-poddaf.cell.df <- full_join(poddaf, cell.min, by="CAS") # x=iPSCLCL, y=poddaf.Css, xlab("six-cell-type POD (ÂµM)")+ylab(bquote(Reg~POD[H]~x~Css~(ÂµM)))+
-poddaf.cell.df <- poddaf.cell.df[-(which(is.na(poddaf.cell.df$poddaf.Css*poddaf.cell.df$iPSCLCL))),]
+poddaf.cell.df <- full_join(poddaf, cell.min, by="CAS") # x=iPSCLCL, y=poddaf.Css, xlab("six-cell-type POD (?�µM)")+ylab(bquote(Reg~POD[H]~x~Css~(?�µM)))+
+#poddaf.cell.df <- poddaf.cell.df[-(which(is.na(poddaf.cell.df$poddaf.Css*poddaf.cell.df$iPSCLCL))),]
 poddaf.cell.s <- round((weightedCorr(log10(poddaf.cell.df$poddaf.Css),log10(poddaf.cell.df$iPSCLCL), method=c("Spearman"))), digits=2)
 poddaf.cell.p <- round((weightedCorr(log10(poddaf.cell.df$poddaf.Css),log10(poddaf.cell.df$iPSCLCL), method=c("Pearson"))), digits=2)
 poddaf.cell.mae <- mean(abs(log10(poddaf.cell.df$poddaf.Css)-log10(poddaf.cell.df$iPSCLCL)))
 poddaf.cell.me <- mean(log10(poddaf.cell.df$poddaf.Css)-log10(poddaf.cell.df$iPSCLCL))
 
 ##BBMD
-bbmd.cell.df <- full_join(BMD, cell.min, by="CAS") # x=iPSCLCL, y=BMD50.Css, xlab("six-cell-type POD (ÂµM)")+ylab(bquote(BMA~BMD[A]~x~Css~(ÂµM)))+
-bbmd.cell.df <- bbmd.cell.df[-(which(is.na(bbmd.cell.df$BMD50.Css*bbmd.cell.df$iPSCLCL))),]
+bbmd.cell.df <- full_join(BMD, cell.min, by="CAS") # x=iPSCLCL, y=BMD50.Css, xlab("six-cell-type POD (?�µM)")+ylab(bquote(BMA~BMD[A]~x~Css~(?�µM)))+
+#bbmd.cell.df <- bbmd.cell.df[-(which(is.na(bbmd.cell.df$BMD50.Css*bbmd.cell.df$iPSCLCL))),]
 wt.bmd.cell <- 1/(log10(bbmd.cell.df$BMD95.Css)-log10(bbmd.cell.df$BMD5.Css))^2
 bbmd.cell.w.s <- round((weightedCorr(log10(bbmd.cell.df$BMD50.Css),log10(bbmd.cell.df$iPSCLCL), method=c("Spearman"), weights=wt.bmd.cell)), digits=2)
 bbmd.cell.w.p <- round((weightedCorr(log10(bbmd.cell.df$BMD50.Css),log10(bbmd.cell.df$iPSCLCL), method=c("Pearson"), weights=wt.bmd.cell)), digits=2)
@@ -416,8 +419,8 @@ bbmd.cell.mae <- weighted.mean(abs(log10(bbmd.cell.df$BMD50.Css)-log10(bbmd.cell
 bbmd.cell.me <- weighted.mean(log10(bbmd.cell.df$BMD50.Css)-log10(bbmd.cell.df$iPSCLCL),wt.bmd.cell)
 
 ##HED
-hed.cell.df <- full_join(HED, cell.min, by="CAS") # x=iPSCLCL, y=HED50.Css, xlab("six-cell-type POD (ÂµM)")+ylab(bquote(BMA~BMD[H]~x~Css~(ÂµM)))+
-hed.cell.df <- hed.cell.df[-(which(is.na(hed.cell.df$HED50.Css*hed.cell.df$iPSCLCL))),]
+hed.cell.df <- full_join(HED, cell.min, by="CAS") # x=iPSCLCL, y=HED50.Css, xlab("six-cell-type POD (?�µM)")+ylab(bquote(BMA~BMD[H]~x~Css~(?�µM)))+
+#hed.cell.df <- hed.cell.df[-(which(is.na(hed.cell.df$HED50.Css*hed.cell.df$iPSCLCL))),]
 wt.hed.cell <- 1/(log10(hed.cell.df$HED95.Css)-log10(hed.cell.df$HED5.Css))^2
 hed.cell.w.s <- round((weightedCorr(log10(hed.cell.df$HED50.Css),log10(hed.cell.df$iPSCLCL), method=c("Spearman"), weights=wt.hed.cell)), digits=2)
 hed.cell.w.p <- round((weightedCorr(log10(hed.cell.df$HED50.Css),log10(hed.cell.df$iPSCLCL), method=c("Pearson"), weights=wt.hed.cell)), digits=2)
@@ -426,16 +429,16 @@ hed.cell.me <- weighted.mean(log10(hed.cell.df$HED50.Css)-log10(hed.cell.df$iPSC
 
 ##in vivo POD vs Cardio POD scatter plot
 ##traditional POD
-pod.cardio.df <- full_join(origpod, cardio, by="CAS") # x=Min, y=PODCss, xlab("hiPSC-CM POD (ÂµM)")+ylab(bquote(Reg~POD[A]~x~Css~(ÂµM)))
-pod.cardio.df <- pod.cardio.df[-(which(is.na(pod.cardio.df$Min * pod.cardio.df$PODCss))),]
+pod.cardio.df <- full_join(origpod, cardio, by="CAS") # x=Min, y=PODCss, xlab("hiPSC-CM POD (?�µM)")+ylab(bquote(Reg~POD[A]~x~Css~(?�µM)))
+#pod.cardio.df <- pod.cardio.df[-(which(is.na(pod.cardio.df$Min * pod.cardio.df$PODCss))),]
 pod.car.s <- round(weightedCorr(log10(pod.cardio.df$PODCss),log10(pod.cardio.df$Min), method=c("Spearman")), digits=2)
 pod.car.p <- round(weightedCorr(log10(pod.cardio.df$PODCss),log10(pod.cardio.df$Min), method=c("Pearson")), digits=2)
 pod.car.mae <- mean(abs(log10(pod.cardio.df$PODCss)-log10(pod.cardio.df$Min)))
 pod.car.me <- mean(log10(pod.cardio.df$PODCss)-log10(pod.cardio.df$Min))
 
 ##traditional POD x DAF
-poddaf.cardio.df <- full_join(poddaf, cardio, by="CAS") # x=Min, y=poddaf.Css, xlab("hiPSC-CM POD (ÂµM)")+ylab(bquote(Reg~POD[H]~x~Css~(ÂµM)))
-poddaf.cardio.df <- poddaf.cardio.df[-(which(is.na(poddaf.cardio.df$Min * poddaf.cardio.df$poddaf.Css))),]
+poddaf.cardio.df <- full_join(poddaf, cardio, by="CAS") # x=Min, y=poddaf.Css, xlab("hiPSC-CM POD (?�µM)")+ylab(bquote(Reg~POD[H]~x~Css~(?�µM)))
+#poddaf.cardio.df <- poddaf.cardio.df[-(which(is.na(poddaf.cardio.df$Min * poddaf.cardio.df$poddaf.Css))),]
 poddaf.car.s <- round(weightedCorr(log10(poddaf.cardio.df$poddaf.Css),log10(poddaf.cardio.df$Min), method=c("Spearman")), digits=2)
 poddaf.car.p <- round(weightedCorr(log10(poddaf.cardio.df$poddaf.Css),log10(poddaf.cardio.df$Min), method=c("Pearson")), digits=2)
 poddaf.car.mae <- mean(abs(log10(poddaf.cardio.df$poddaf.Css)-log10(poddaf.cardio.df$Min)))
@@ -443,7 +446,7 @@ poddaf.car.me <- mean(log10(poddaf.cardio.df$poddaf.Css)-log10(poddaf.cardio.df$
 
 ##BBMD
 bbmd.cardio.df <- full_join(BMD, cardio, by="CAS") 
-bbmd.cardio.df <- bbmd.cardio.df[-(which(is.na(bbmd.cardio.df$Min * bbmd.cardio.df$BMD50.Css))),]
+#bbmd.cardio.df <- bbmd.cardio.df[-(which(is.na(bbmd.cardio.df$Min * bbmd.cardio.df$BMD50.Css))),]
 wt.bmd.cardio <- 1/(log10(bbmd.cardio.df$BMD95.Css)-log10(bbmd.cardio.df$BMD5.Css))^2
 bbmd.car.w.s <- round(weightedCorr(log10(bbmd.cardio.df$BMD50.Css),log10(bbmd.cardio.df$Min), method=c("Spearman"), weights=wt.bmd.cardio), digits=2)
 bbmd.car.w.p <- round(weightedCorr(log10(bbmd.cardio.df$BMD50.Css),log10(bbmd.cardio.df$Min), method=c("Pearson"), weights=wt.bmd.cardio), digits=2)
@@ -452,7 +455,7 @@ bbmd.car.me <- weighted.mean(log10(bbmd.cardio.df$BMD50.Css)-log10(bbmd.cardio.d
 
 ##HED
 hed.cardio.df <- full_join(HED, cardio, by="CAS")
-hed.cardio.df <- hed.cardio.df[-(which(is.na(hed.cardio.df$Min * hed.cardio.df$HED50.Css))),]
+#hed.cardio.df <- hed.cardio.df[-(which(is.na(hed.cardio.df$Min * hed.cardio.df$HED50.Css))),]
 wt.hed.cardio <- 1/(log10(hed.cardio.df$HED95.Css)-log10(hed.cardio.df$HED5.Css))^2
 hed.car.w.s <- round(weightedCorr(log10(hed.cardio.df$HED50.Css),log10(hed.cardio.df$Min), method=c("Spearman"), weights=wt.hed.cardio), digits=2)
 hed.car.w.p <- round(weightedCorr(log10(hed.cardio.df$HED50.Css),log10(hed.cardio.df$Min), method=c("Pearson"), weights=wt.hed.cardio), digits=2)
@@ -463,7 +466,7 @@ hed.car.me <- weighted.mean(log10(hed.cardio.df$HED50.Css)-log10(hed.cardio.df$M
 ##in vivo POD vs constant POD scatter plot
 ##traditional POD
 pod.constant.df <- full_join(origpod, constant.POD, by="CAS")
-pod.constant.df <- pod.constant.df[-(which(is.na(pod.constant.df$PODCss*pod.constant.df$iPSCLCL))),]
+#pod.constant.df <- pod.constant.df[-(which(is.na(pod.constant.df$PODCss*pod.constant.df$iPSCLCL))),]
 pod.constant.s <- round((weightedCorr(log10(pod.constant.df$PODCss),log10(pod.constant.df$iPSCLCL), method=c("Spearman"))), digits=2)
 pod.constant.p <- round((weightedCorr(log10(pod.constant.df$PODCss),log10(pod.constant.df$iPSCLCL), method=c("Pearson"))), digits=2)
 pod.constant.mae <- mean(abs(log10(pod.constant.df$PODCss)-log10(pod.constant.df$iPSCLCL)))
@@ -471,7 +474,7 @@ pod.constant.me <- mean(log10(pod.constant.df$PODCss)-log10(pod.constant.df$iPSC
 
 ##traditional POD x DAF
 poddaf.constant.df <- full_join(poddaf, constant.POD, by="CAS")
-poddaf.constant.df <- poddaf.constant.df[-(which(is.na(poddaf.constant.df$poddaf.Css*poddaf.constant.df$iPSCLCL))),]
+#poddaf.constant.df <- poddaf.constant.df[-(which(is.na(poddaf.constant.df$poddaf.Css*poddaf.constant.df$iPSCLCL))),]
 poddaf.constant.s <- round((weightedCorr(log10(poddaf.constant.df$poddaf.Css),log10(poddaf.constant.df$iPSCLCL), method=c("Spearman"))), digits=2)
 poddaf.constant.p <- round((weightedCorr(log10(poddaf.constant.df$poddaf.Css),log10(poddaf.constant.df$iPSCLCL), method=c("Pearson"))), digits=2)
 poddaf.constant.mae <- mean(abs(log10(poddaf.constant.df$poddaf.Css)-log10(poddaf.constant.df$iPSCLCL)))
@@ -479,7 +482,7 @@ poddaf.constant.me <- mean(log10(poddaf.constant.df$poddaf.Css)-log10(poddaf.con
 
 ##BBMD
 bbmd.constant.df <- full_join(BMD, constant.POD, by="CAS") 
-bbmd.constant.df <- bbmd.constant.df[-(which(is.na(bbmd.constant.df$BMD50.Css*bbmd.constant.df$iPSCLCL))),]
+#bbmd.constant.df <- bbmd.constant.df[-(which(is.na(bbmd.constant.df$BMD50.Css*bbmd.constant.df$iPSCLCL))),]
 wt.bmd.constant <- 1/(log10(bbmd.constant.df$BMD95.Css)-log10(bbmd.constant.df$BMD5.Css))^2
 bbmd.constant.w.s <- round((weightedCorr(log10(bbmd.constant.df$BMD50.Css),log10(bbmd.constant.df$iPSCLCL), method=c("Spearman"), weights=wt.bmd.constant)), digits=2)
 bbmd.constant.w.p <- round((weightedCorr(log10(bbmd.constant.df$BMD50.Css),log10(bbmd.constant.df$iPSCLCL), method=c("Pearson"), weights=wt.bmd.constant)), digits=2)
@@ -488,7 +491,7 @@ bbmd.constant.me <- weighted.mean(log10(bbmd.constant.df$BMD50.Css)-log10(bbmd.c
 
 ##HED
 hed.constant.df <- full_join(HED, constant.POD, by="CAS") 
-hed.constant.df <- hed.constant.df[-(which(is.na(hed.constant.df$HED50.Css*hed.constant.df$iPSCLCL))),]
+#hed.constant.df <- hed.constant.df[-(which(is.na(hed.constant.df$HED50.Css*hed.constant.df$iPSCLCL))),]
 wt.hed.constant <- 1/(log10(hed.constant.df$HED95.Css)-log10(hed.constant.df$HED5.Css))^2
 hed.constant.w.s <- round((weightedCorr(log10(hed.constant.df$HED50.Css),log10(hed.constant.df$iPSCLCL), method=c("Spearman"), weights=wt.hed.constant)), digits=2)
 hed.constant.w.p <- round((weightedCorr(log10(hed.constant.df$HED50.Css),log10(hed.constant.df$iPSCLCL), method=c("Pearson"), weights=wt.hed.constant)), digits=2)
@@ -499,7 +502,7 @@ hed.constant.me <- weighted.mean(log10(hed.constant.df$HED50.Css)-log10(hed.cons
 ##in vivo POD vs constant POD scatter plot (conc = 0.01)
 ##traditional POD
 pod.constant.df.2 <- full_join(origpod, constant.POD.2, by="CAS") 
-pod.constant.df.2 <- pod.constant.df.2[-(which(is.na(pod.constant.df.2$PODCss*pod.constant.df.2$iPSCLCL))),]
+#pod.constant.df.2 <- pod.constant.df.2[-(which(is.na(pod.constant.df.2$PODCss*pod.constant.df.2$iPSCLCL))),]
 pod.constant.s.2 <- round((weightedCorr(log10(pod.constant.df.2$PODCss),log10(pod.constant.df.2$iPSCLCL), method=c("Spearman"))), digits=2)
 pod.constant.p.2 <- round((weightedCorr(log10(pod.constant.df.2$PODCss),log10(pod.constant.df.2$iPSCLCL), method=c("Pearson"))), digits=2)
 pod.constant.mae.2 <- mean(abs(log10(pod.constant.df.2$PODCss)-log10(pod.constant.df.2$iPSCLCL)))
@@ -507,7 +510,7 @@ pod.constant.me.2 <- mean(log10(pod.constant.df.2$PODCss)-log10(pod.constant.df.
 
 ##traditional POD x DAF
 poddaf.constant.df.2 <- full_join(poddaf, constant.POD.2, by="CAS") 
-poddaf.constant.df.2 <- poddaf.constant.df.2[-(which(is.na(poddaf.constant.df.2$poddaf.Css*poddaf.constant.df.2$iPSCLCL))),]
+#poddaf.constant.df.2 <- poddaf.constant.df.2[-(which(is.na(poddaf.constant.df.2$poddaf.Css*poddaf.constant.df.2$iPSCLCL))),]
 poddaf.constant.s.2 <- round((weightedCorr(log10(poddaf.constant.df.2$poddaf.Css),log10(poddaf.constant.df.2$iPSCLCL), method=c("Spearman"))), digits=2)
 poddaf.constant.p.2 <- round((weightedCorr(log10(poddaf.constant.df.2$poddaf.Css),log10(poddaf.constant.df.2$iPSCLCL), method=c("Pearson"))), digits=2)
 poddaf.constant.mae.2 <- mean(abs(log10(poddaf.constant.df.2$poddaf.Css)-log10(poddaf.constant.df.2$iPSCLCL)))
@@ -515,7 +518,7 @@ poddaf.constant.me.2 <- mean(log10(poddaf.constant.df.2$poddaf.Css)-log10(poddaf
 
 ##BBMD
 bbmd.constant.df.2 <- full_join(BMD, constant.POD.2, by="CAS") 
-bbmd.constant.df.2 <- bbmd.constant.df.2[-(which(is.na(bbmd.constant.df.2$BMD50.Css*bbmd.constant.df.2$iPSCLCL))),]
+#bbmd.constant.df.2 <- bbmd.constant.df.2[-(which(is.na(bbmd.constant.df.2$BMD50.Css*bbmd.constant.df.2$iPSCLCL))),]
 wt.bmd.constant.2 <- 1/(log10(bbmd.constant.df.2$BMD95.Css)-log10(bbmd.constant.df.2$BMD5.Css))^2
 bbmd.constant.w.s.2 <- round((weightedCorr(log10(bbmd.constant.df.2$BMD50.Css),log10(bbmd.constant.df.2$iPSCLCL), method=c("Spearman"), weights=wt.bmd.constant.2)), digits=2)
 bbmd.constant.w.p.2 <- round((weightedCorr(log10(bbmd.constant.df.2$BMD50.Css),log10(bbmd.constant.df.2$iPSCLCL), method=c("Pearson"), weights=wt.bmd.constant.2)), digits=2)
@@ -524,7 +527,7 @@ bbmd.constant.me.2 <- weighted.mean(log10(bbmd.constant.df.2$BMD50.Css)-log10(bb
 
 ##HED
 hed.constant.df.2 <- full_join(HED, constant.POD.2, by="CAS") 
-hed.constant.df.2 <- hed.constant.df.2[-(which(is.na(hed.constant.df.2$HED50.Css*hed.constant.df.2$iPSCLCL))),]
+#hed.constant.df.2 <- hed.constant.df.2[-(which(is.na(hed.constant.df.2$HED50.Css*hed.constant.df.2$iPSCLCL))),]
 wt.hed.constant.2 <- 1/(log10(hed.constant.df.2$HED95.Css)-log10(hed.constant.df.2$HED5.Css))^2
 hed.constant.w.s.2 <- round((weightedCorr(log10(hed.constant.df.2$HED50.Css),log10(hed.constant.df.2$iPSCLCL), method=c("Spearman"), weights=wt.hed.constant.2)), digits=2)
 hed.constant.w.p.2 <- round((weightedCorr(log10(hed.constant.df.2$HED50.Css),log10(hed.constant.df.2$iPSCLCL), method=c("Pearson"), weights=wt.hed.constant.2)), digits=2)
@@ -1387,7 +1390,7 @@ me.data.all_VCBA <- data.frame(Group = "Using VCBA model",
 # --------- Plot -----------
 POD.data.all <- rbind(POD.data.all_withoutadj, POD.data.all_Fischer, POD.data.all_IVMBM, POD.data.all_VIVD, POD.data.all_VCBA)
 POD.data.all$Group <- factor(POD.data.all$Group, levels = c("Without adjustment", "Using Fischer model", "Using IVMBM model", "Using VIVD model", "Using VCBA model"),
-                             labels = c("No Adjustmemt","Fischer et al. (2017)", "Armitage et al. (2021)", "Fisher et al. (2019)", "Zaldívar Comenges et al. (2017)"))
+                             labels = c("No Adjustmemt","Fischer et al.\n(2017)", "Armitage et al.\n(2021)", "Fisher et al.\n(2019)", "Zaldivar-Comenges\net al. (2017)"))
 POD.data.all$x.type <- factor(POD.data.all$x.type, levels = c("Constant POD  (0.01 uM)", "Constant POD (1 uM)", "ToxCast POD", "hiPSC-CM", "Six-cell-type POD"))
 POD.data.all$y.type <- factor(POD.data.all$y.type, levels = c("Reg POD_A", "Reg POD_H", "BMA BMD_A", "BMA BMD_H"))
 POD.data.all <- POD.data.all[-which(POD.data.all$x.type == "hiPSC-CM"),]
@@ -1395,28 +1398,28 @@ POD.data.all <- POD.data.all[-which(POD.data.all$x.type == "hiPSC-CM"),]
 
 RHO.data.all <- rbind(RHO.data.all_withoutadj, RHO.data.all_Fischer, RHO.data.all_IVMBM, RHO.data.all_VIVD, RHO.data.all_VCBA)
 RHO.data.all$Group <- factor(RHO.data.all$Group, levels = c("Without adjustment", "Using Fischer model", "Using IVMBM model", "Using VIVD model", "Using VCBA model"),
-                             labels = c("No Adjustmemt","Fischer et al. (2017)", "Armitage et al. (2021)", "Fisher et al. (2019)", "Zaldívar Comenges et al. (2017)"))
+                             labels = c("No Adjustmemt","Fischer et al.\n(2017)", "Armitage et al.\n(2021)", "Fisher et al.\n(2019)", "Zaldivar-Comenges\net al. (2017)"))
 RHO.data.all$x.type <- factor(RHO.data.all$x.type, levels = c("Constant POD  (0.01 uM)", "Constant POD (1 uM)", "ToxCast POD", "hiPSC-CM", "Six-cell-type POD"))
 RHO.data.all$y.type <- factor(RHO.data.all$y.type, levels = c("Reg POD_A", "Reg POD_H", "BMA BMD_A", "BMA BMD_H"))
 RHO.data.all <- RHO.data.all[-which(RHO.data.all$x.type == "hiPSC-CM"),]
 
 R.data.all <- rbind(R.data.all_withoutadj, R.data.all_Fischer, R.data.all_IVMBM, R.data.all_VIVD, R.data.all_VCBA)
 R.data.all$Group <- factor(R.data.all$Group, levels = c("Without adjustment", "Using Fischer model", "Using IVMBM model", "Using VIVD model", "Using VCBA model"),
-                           labels = c("No Adjustmemt","Fischer et al. (2017)", "Armitage et al. (2021)", "Fisher et al. (2019)", "Zaldívar Comenges et al. (2017)"))
+                           labels = c("No Adjustmemt","Fischer et al.\n(2017)", "Armitage et al.\n(2021)", "Fisher et al.\n(2019)", "Zaldivar-Comenges\net al. (2017)"))
 R.data.all$x.type <- factor(R.data.all$x.type, levels = c("Constant POD  (0.01 uM)", "Constant POD (1 uM)", "ToxCast POD", "hiPSC-CM", "Six-cell-type POD"))
 R.data.all$y.type <- factor(R.data.all$y.type, levels = c("Reg POD_A", "Reg POD_H", "BMA BMD_A", "BMA BMD_H"))
 R.data.all <- R.data.all[-which(R.data.all$x.type == "hiPSC-CM"),]
 
 mae.data.all <- rbind(mae.data.all_withoutadj, mae.data.all_Fischer, mae.data.all_IVMBM, mae.data.all_VIVD, mae.data.all_VCBA)
 mae.data.all$Group <- factor(mae.data.all$Group, levels = c("Without adjustment", "Using Fischer model", "Using IVMBM model", "Using VIVD model", "Using VCBA model"),
-                             labels = c("No Adjustmemt","Fischer et al. (2017)", "Armitage et al. (2021)", "Fisher et al. (2019)", "Zaldívar Comenges et al. (2017)"))
+                             labels = c("No Adjustmemt","Fischer et al.\n(2017)", "Armitage et al.\n(2021)", "Fisher et al.\n(2019)", "Zaldivar-Comenges\net al. (2017)"))
 mae.data.all$x.type <- factor(mae.data.all$x.type, levels = c("Constant POD  (0.01 uM)", "Constant POD (1 uM)", "ToxCast POD", "hiPSC-CM", "Six-cell-type POD"))
 mae.data.all$y.type <- factor(mae.data.all$y.type, levels = c("Reg POD_A", "Reg POD_H", "BMA BMD_A", "BMA BMD_H"))
 mae.data.all <- mae.data.all[-which(mae.data.all$x.type == "hiPSC-CM"),]
 
 me.data.all <- rbind(me.data.all_withoutadj, me.data.all_Fischer, me.data.all_IVMBM, me.data.all_VIVD, me.data.all_VCBA)
 me.data.all$Group <- factor(me.data.all$Group, levels = c("Without adjustment", "Using Fischer model", "Using IVMBM model", "Using VIVD model", "Using VCBA model"),
-                            labels = c("No Adjustmemt","Fischer et al. (2017)", "Armitage et al. (2021)", "Fisher et al. (2019)", "Zaldívar Comenges et al. (2017)"))
+                            labels = c("No Adjustmemt","Fischer et al.\n(2017)", "Armitage et al.\n(2021)", "Fisher et al.\n(2019)", "Zaldivar-Comenges\net al. (2017)"))
 me.data.all$x.type <- factor(me.data.all$x.type, levels = c("Constant POD  (0.01 uM)", "Constant POD (1 uM)", "ToxCast POD", "hiPSC-CM", "Six-cell-type POD"))
 me.data.all$y.type <- factor(me.data.all$y.type, levels = c("Reg POD_A", "Reg POD_H", "BMA BMD_A", "BMA BMD_H"))
 me.data.all <- me.data.all[-which(me.data.all$x.type == "hiPSC-CM"),]
@@ -1527,7 +1530,11 @@ ggplot() +
         axis.title = element_text(color = "black", size=12),
         axis.text.y = element_text(color = "black", size=10),
         axis.text.x = element_text(angle = 45, color = "black", size=10, hjust=1))
-ggsave("Figure S11.jpeg", width = 12.8, height = 6.29) #Saving 12.8 x 6.29 in image
-ggsave("Figure S11.pdf", width = 12.8, height = 6.29) 
+ggsave("Figure S11_new.jpeg", width = 12.8, height = 6.29) #Saving 12.8 x 6.29 in image
+ggsave("Figure S11_new.pdf", width = 12.8, height = 6.29) 
 
-
+model_app_results <- RHO.data.all
+model_app_results$r.value <- R.data.all$rho.value
+model_app_results$MAE <- mae.data.all$rho.value
+model_app_results$ME <- me.data.all$rho.value
+write.csv(model_app_results,"model_app_results.csv")
