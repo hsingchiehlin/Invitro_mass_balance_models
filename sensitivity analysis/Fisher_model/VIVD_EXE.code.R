@@ -635,6 +635,8 @@ VIVD.results$Cell.type[which(VIVD.results$Cell.type == "Ratcerebellargranulecell
 VIVD.results$Q_cells <- VIVD.results$Q_cells * 1e6
 VIVD.results$Q_media_free <- VIVD.results$Q_media_free * 1e6
 VIVD.results$Q_media <- VIVD.results$Q_media * 1e6
+VIVD.results$IOC <- rep(VIVD.Che.list$Compound.type, 52)
+VIVD.results$pKa <- rep(VIVD.Che.list$pKa, 52)
 
 write.csv(VIVD.results, "VIVD_results.csv")
 
