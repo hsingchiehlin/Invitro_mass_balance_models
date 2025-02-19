@@ -1,6 +1,3 @@
-,Chemical,CAS,MW,Compound.type,Salting.out.Constant,Melting.Point_Celsius.degree,pKa,Water.Solubility_mgperL,LogKOW,LogKAW,CNOM_uM,Time,Q_met,C_cells,C_air,C_plastic,C_free_diss,C_IW,C_lyso,C_mito,C_parent,Q_parent,Q_media_free,Q_cells,Q_media,Q_air,Q_plastic,Q_IW,Q_lyso
-1,chlorpromazine,50-53-3,318.86,1,0.3304,151,5,2.2128884,5.41,-6.97,2,1440,0,6.77E-06,3.80E-16,2.08E-08,1.39E-09,6.77E-06,6.77E-06,6.77E-06,2.00E-06,3.00E-09,2.08E-12,1.72E-11,2.98E-09,5.81E-18,3.59E-12,1.53E-11,1.72E-13
-2,chlorpromazine,50-53-3,318.86,1,0.3304,151,5,2.2128884,5.41,-6.97,20,1440,0,6.77E-05,3.80E-15,2.08E-07,1.39E-08,6.77E-05,6.77E-05,6.77E-05,2.00E-05,3.00E-08,2.08E-11,1.72E-10,2.98E-08,5.81E-17,3.59E-11,1.53E-10,1.72E-12
-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,2.98E-03,,,,
-,,,,,,,,,,,,,,,,,,,,,,,,,2.98E-02,,,,
+"","Chemical","CAS","MW","Compound.type","Salting.out.Constant","Melting.Point_Celsius.degree","pKa","Water.Solubility_mgperL","LogKOW","LogKAW","CNOM_uM","Time","Q_met","C_cells","C_air","C_plastic","C_free_diss","C_IW","C_lyso","C_mito","C_parent","Q_parent","Q_media_free","Q_cells","Q_media","Q_air","Q_plastic","Q_IW","Q_lyso"
+"1","chlorpromazine","50-53-3",318.86,2,0.3304,151,9.4,2.2128884,5.41,-6.97,2,1440,0,2.06932e-07,3.77856e-18,2.0948e-08,1.39619e-09,1.35056e-07,7.9969e-09,8.66522e-07,2e-06,3e-09,2.09428e-12,5.26291e-13,2.99586e-09,5.78023e-20,3.61172e-12,3.05705e-13,2.03385e-16
+"2","chlorpromazine","50-53-3",318.86,2,0.3304,151,9.4,2.2128884,5.41,-6.97,20,1440,0,2.06932e-06,3.77856e-17,2.0948e-07,1.39619e-08,1.35056e-06,7.9969e-08,8.66522e-06,2e-05,3e-08,2.09428e-11,5.26291e-12,2.99586e-08,5.78023e-19,3.61172e-11,3.05705e-12,2.03385e-15
