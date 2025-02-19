@@ -1,0 +1,11 @@
+Chemical,CAS,Obs,%free_Fischer,%free_VIVD,%free_IVMBM,%free_VCBA,ref,IOC
+Cisapride,81098-60-4,0.62,0.512955845,0.480937,0.573232255,NA,Blanchette et al.,B
+Citalopram hydrobromide,59729-33-8,1,0.817521337,0.651725,0.421538805,0.559596324,Blanchette et al.,N
+Dofetilide,115256-11-6,0.86,0.955305309,0.953902,0.97327669,NA,Blanchette et al.,B
+Moxifloxacin hydrochloride,186826-86-8,0.93,0.998325739,0.996654,0.996107558,NA,Blanchette et al.,A
+N-acetylpro-cainamide,32795-44-1,0.96,1.000200236,0.996219,0.999639635,NA,Blanchette et al.,B
+Quinidine sulfate,50-54-4,0.68,0.943646265,0.638993,0.935192856,NA,Blanchette et al.,B
+Sematilide,101526-83-4,0.96,1.00012582,0.99689,0.999586919,NA,Blanchette et al.,B
+Sotalol hydrochloride,959-24-0,0.97,1.001986688,0.99962,1.000454238,NA,Blanchette et al.,B
+Lamotrigine,84057-84-1,1,0.638676116,0.897865,0.71346859,NA,Blanchette et al.,B
+Mifepristone,84371-65-3,0.58,0.033495857,0.0360436,0.029379879,0.030907551,Blanchette et al.,N

@@ -1,0 +1,13 @@
+List,SubstanceName,CASRN,DTXSID,Molecular Weight,OPERABoilingPoint,OPERAHenryLawConstant,OPERAMeltingPoint,OPERAOctanolAirPartitionCoefficient,OPERAOctanolWaterDistributionCoefficient,OPERAOctanolWaterPartitionCoefficient,OPERAVaporPressure,OPERAWaterSolubility
+Custom Chemical List 1,Mifepristone,84371-65-3,DTXSID5023322,431.282,431,-7.64,115,10.27,4.81,4.81,-9.07,-5.9
+Custom Chemical List 1,Sotalol hydrochloride,959-24-0,DTXSID8021278,272.119,290,-8.73,165,8.54,-0.71,-0.63,-9.38,-2.25
+Custom Chemical List 1,Cisapride,81098-60-4,DTXSID3022825,465.183,377,-10.9,189,9.64,2.69,3.64,-8.32,-4.4
+Custom Chemical List 1,Moxifloxacin hydrochloride,186826-86-8,DTXSID4045921,401.175,346,-10.4,224,9.57,-3.94,1.48,-8.62,-1.47
+Custom Chemical List 1,Citalopram,59729-33-8,DTXSID8022826,324.164,352,-5.4,111,10.63,2.22,2.5,-7.75,-4.68
+Custom Chemical List 1,Sematilide,101526-83-4,DTXSID0058720,313.146,277,-10.7,153,9.3,-0.22,1.53,-8.96,-2.73
+Custom Chemical List 1,Dofetilide,115256-11-6,DTXSID5046433,441.139,275,-7.88,194,9.58,1.03,2.49,-9.78,-4.05
+Custom Chemical List 1,2-(1-(Ammoniocarbonyl)-3-(diisopropylammonio)-1-phenylpropyl)pyridinium phosphate,22059-60-5,DTXSID30944685,339.231,327,-9.64,169,9.28,-0.82,0.39,-9.13,-2.44
+Custom Chemical List 1,Lamotrigine,84057-84-1,DTXSID2023195,255.008,336,-8.95,238,9.2,2.44,2.57,-9.42,-4.37
+Custom Chemical List 1,Quinidine sulfate anhydrous,50-54-4,DTXSID50883224,324.184,342,-8.57,180,10.62,-2.69,0.06,-8.68,-3.01
+Custom Chemical List 1,Cabazitaxel,183133-96-2,DTXSID40171389,835.378,463,-10.2,205,9.6,2.68,2.72,-9.24,-3.88
+Custom Chemical List 1,Acecainide,32795-44-1,DTXSID6048414,277.179,294,-10.8,147,9.32,-1.91,1.38,-9.24,-2.55
