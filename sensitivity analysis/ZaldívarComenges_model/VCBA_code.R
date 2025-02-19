@@ -26,7 +26,7 @@ for(j in 1:length(vcba.cell.list$Cell)){
   cellType <- vcba.cell.list$Cell[j]
   
   
-  for(i in c(1:25, 28:81, 83:length(vcba.che.list$Chemical))){
+  for(i in c(1:35, 38:90, 92:length(vcba.che.list$Chemical))){
     
     ######################DESCRIPTION OF xdot function=DIFFERENTIAL EQUATIONS #######################
     xdot<-function(t,state,parameters) {
@@ -318,7 +318,7 @@ for(j in 1:length(vcba.cell.list$Cell)){
     print(i)
   }
   
-  for (i in 26:27){
+  for (i in c(36,37,91)){
     results$Q_cells[i] <- NA #nmole 
     results$Q_media_free[i] <- NA #----revise 
     results$Q_media[i] <- NA #----revise 
@@ -351,7 +351,7 @@ for(j in 1:length(vcba.cell.list$Cell)){
   cellType <- vcba.cell.list$Cell[j]
   
   
-  for(i in c(1:25, 28:81, 83:length(vcba.che.list$Chemical))){
+  for(i in c(1:35, 38:90, 92:length(vcba.che.list$Chemical))){
     
     ######################DESCRIPTION OF xdot function=DIFFERENTIAL EQUATIONS #######################
     xdot<-function(t,state,parameters) {
@@ -643,7 +643,7 @@ for(j in 1:length(vcba.cell.list$Cell)){
     print(i)
   }
   
-  for (i in 26:27){
+  for (i in c(36,37,91)){
     results$Q_cells[i] <- NA #nmole 
     results$Q_media_free[i] <- NA #----revise 
     results$Q_media[i] <- NA #----revise 
@@ -676,7 +676,7 @@ for(j in 1:length(vcba.cell.list$Cell)){
   cellType <- vcba.cell.list$Cell[j]
   
   
-  for(i in c(1:25, 28:81, 83:length(vcba.che.list$Chemical))){
+  for(i in c(1:35, 38:90, 92:length(vcba.che.list$Chemical))){
     
     ######################DESCRIPTION OF xdot function=DIFFERENTIAL EQUATIONS #######################
     xdot<-function(t,state,parameters) {
@@ -968,7 +968,7 @@ for(j in 1:length(vcba.cell.list$Cell)){
     print(i)
   }
   
-  for (i in 26:27){
+  for (i in c(36,37,91)){
     results$Q_cells[i] <- NA #nmole 
     results$Q_media_free[i] <- NA #----revise 
     results$Q_media[i] <- NA #----revise 
@@ -1001,7 +1001,7 @@ for(j in 1:length(vcba.cell.list$Cell)){
   cellType <- vcba.cell.list$Cell[j]
   
   
-  for(i in c(1:25, 28:81, 83:length(vcba.che.list$Chemical))){
+  for(i in c(1:35, 38:90, 92:length(vcba.che.list$Chemical))){
     
     ######################DESCRIPTION OF xdot function=DIFFERENTIAL EQUATIONS #######################
     xdot<-function(t,state,parameters) {
@@ -1293,7 +1293,7 @@ for(j in 1:length(vcba.cell.list$Cell)){
     print(i)
   }
   
-  for (i in 26:27){
+  for (i in c(36,37,91)){
     results$Q_cells[i] <- NA #nmole 
     results$Q_media_free[i] <- NA #----revise 
     results$Q_media[i] <- NA #----revise 
@@ -1306,7 +1306,9 @@ for(j in 1:length(vcba.cell.list$Cell)){
 
 vcba.results$Cell.type[which(vcba.results$Cell.type == "Ratcerebellargranulecell")] <- "Rat cerebellar granule cell"
 vcba.results$Cell.type[which(vcba.results$Cell.type == "Hep_G2")] <- "HepG2"
-vcba.results$Conc <- rep(c("1 uM", "0.01 uM"), each = 4316)
+#vcba.results$Conc <- rep(c("1 uM", "0.01 uM"), each = 4316)
+vcba.results$IOC <- rep(vcba.che.list$IOC.type, 52)
+vcba.results$pKa <- rep(vcba.che.list$pKa, 52)
 write.csv(vcba.results, "vcba_results.csv")
 
 
@@ -1631,7 +1633,7 @@ for(j in 1:length(vcba.cell.list$Cell)){
     print(i)
   }
   
-  for (i in 26:27){
+  for (i in c(36,37,91)){
     results$Q_cells[i] <- NA #nmole 
     results$Q_media_free[i] <- NA #----revise 
     results$Q_media[i] <- NA #----revise 
@@ -1956,7 +1958,7 @@ for(j in 1:length(vcba.cell.list$Cell)){
     print(i)
   }
   
-  for (i in 26:27){
+  for (i in c(36,37,91)){
     results$Q_cells[i] <- NA #nmole 
     results$Q_media_free[i] <- NA #----revise 
     results$Q_media[i] <- NA #----revise 
@@ -2281,7 +2283,7 @@ for(j in 1:length(vcba.cell.list$Cell)){
     print(i)
   }
   
-  for (i in 26:27){
+  for (i in c(36,37,91)){
     results$Q_cells[i] <- NA #nmole 
     results$Q_media_free[i] <- NA #----revise 
     results$Q_media[i] <- NA #----revise 
@@ -2606,7 +2608,7 @@ for(j in 1:length(vcba.cell.list$Cell)){
     print(i)
   }
   
-  for (i in 26:27){
+  for (i in c(36,37,91)){
     results$Q_cells[i] <- NA #nmole 
     results$Q_media_free[i] <- NA #----revise 
     results$Q_media[i] <- NA #----revise 
