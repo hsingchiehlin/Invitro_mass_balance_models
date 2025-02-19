@@ -1,0 +1,19 @@
+Chemical,Obs,%free_Fischer,%free_VIVD,%free_IVMBM,%free_VCBA,ref,IOC
+Eugenol F,0.999999,0.996842877,0.992923497,0.992878437,0.993535874,Schug et al. (Fish RTgut - High dose),N
+Methyl-antranilate,0.9999,0.999052349,0.996835539,0.997125494,0.997273998,Schug et al. (Fish RTgut - High dose),N
+Lilyfore,0.9999,0.972556801,0.94264464,0.942689035,0.946267092,Schug et al. (Fish RTgut - High dose),N
+Damascone beta,9.90E-01,0.774890367,0.603846154,0.585121071,0.621372959,Schug et al. (Fish RTgut - High dose),N
+Veloutone,5.70E-01,0.266934153,0.138297872,0.141056615,0.150937151,Schug et al. (Fish RTgut - High dose),N
+Verdox,7.40E-01,0.024171699,0.010899471,0.011511421,,Schug et al. (Fish RTgut - High dose),N
+Nirvanol,4.60E-01,0.122164255,0.057777778,0.059828459,,Schug et al. (Fish RTgut - High dose),N
+Cetalox,7.20E-01,0.216763927,0.108490566,0.103805054,0.118756275,Schug et al. (Fish RTgut - High dose),N
+Tonalide,0.43,0.122164255,0.057881137,0.059828459,0.064064943,Schug et al. (Fish RTgut - High dose),N
+Eugenol F,0.9999,0.996842877,0.99341,0.992878437,0.993535877,Schug et al. (Fish RTgut - Low dose),N
+Methyl-antranilate,0.9999,0.999052349,0.996837408,0.997125494,0.997273997,Schug et al. (Fish RTgut - Low dose),N
+Lilyfore,0.9999,0.972556801,0.943205,0.942689035,0.946267082,Schug et al. (Fish RTgut - Low dose),N
+Damascone beta,0.99,0.774890367,0.603822,0.306344739,0.621369699,Schug et al. (Fish RTgut - Low dose),N
+Veloutone,0.57,0.266934153,0.1381952,0.052278672,0.150936881,Schug et al. (Fish RTgut - Low dose),N
+Verdox,0.74,0.024171699,0.0109065,0.006344105,,Schug et al. (Fish RTgut - Low dose),N
+Nirvanol,0.46,0.122164255,0.057824,0.059828459,,Schug et al. (Fish RTgut - Low dose),N
+Cetalox,0.72,0.216763927,0.108744,0.103805054,0.118756973,Schug et al. (Fish RTgut - Low dose),N
+Tonalide,0.43,0.122164255,0.057881601,0.059828459,0.064064943,Schug et al. (Fish RTgut - Low dose),N
