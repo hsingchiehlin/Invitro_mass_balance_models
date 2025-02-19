@@ -135,21 +135,7 @@ End.\n')
   
 }
 
-
-
-  sink()
-  
-  out <- mcsim(model, file.name)
-  
-  results$Q_cells[i] <- out$Q_cells[25]
-  results$Q_media_free[i] <- out$Q_media_free[25]
-  results$Q_media[i] <- out$Q_media[25]
-  results$F_free_media[i] <- out$C_free_diss[25]/out$C_parent[25]
-  
-  print(i)
-
-
-
+write.csv(VIVD.Che.list, "VIVD.Che.sim.results_pfas.csv")
 
 
 
