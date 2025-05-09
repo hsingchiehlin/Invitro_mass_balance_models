@@ -2,7 +2,7 @@
 
 This repository is constructed for the paper "Comparative Analysis of Chemical Distribution Models for Quantitative In Vitro to In Vivo Extrapolations."
 
-This paper includes three parts of analysis: (1) Model performance comparison, (2) Sensitivity analysis, and (3) Model application (details can be found in Figure 1 - Framework of the paper). Each folder contains the tools and R scripts required to perform the predictions of the in vitro mass balance model.
+This paper includes three parts of analysis: (1) Model performance comparison, (2) Sensitivity analysis, and (3) Model application (details can be found in Figure 1 - Framework of the paper). Each folder contains the datasets, Excel simulation tools, and R scripts required to perform the in vitro mass balance model predictions.
 
 ## Figure information
 The folder "Plotting" includes the data and R script to reproduce Figure 2 and Figures S1 - S9, S11.
